@@ -1,3 +1,7 @@
+package Coffee;
+
+import IngrediantsDecorator.IngrediantsType;
+
 import java.util.Map;
 
 public abstract class Coffee {

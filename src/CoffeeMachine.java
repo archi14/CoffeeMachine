@@ -1,3 +1,14 @@
+import Coffee.Americano;
+import Coffee.Coffee;
+import Coffee.CoffeeType;
+import Coffee.Latte;
+import IngrediantsDecorator.IngrediantsType;
+import IngrediantsDecorator.Milk;
+import IngrediantsDecorator.Water;
+import IngrediantsDecorator.WhippedCream;
+import Utils.StockManager;
+import Coffee.Cappucino;
+
 import java.util.*;
 
 public class CoffeeMachine {
@@ -12,24 +23,28 @@ public class CoffeeMachine {
         initializeMenu();
         initializeIngrediants();
     }
+    public Coffee getReciepe(CoffeeType coffeeType)
+    {
+        return coffeeMenu.get(coffeeType.ordinal());
+    }
 
     public void initializeIngrediants()
     {
-        stockManager.addStock(IngrediantsType.WATER, 100);
-        stockManager.addStock(IngrediantsType.MILK, 100);
-        stockManager.addStock(IngrediantsType.WHIPPEDCREAM, 100);
+        stockManager.addStock(IngrediantsType.WATER, 15);
+        stockManager.addStock(IngrediantsType.MILK, 10);
+        stockManager.addStock(IngrediantsType.WHIPPEDCREAM, 10);
 
     }
     public void initializeMenu()
     {
-        // Americano
+        // Coffee.Americano
         Map<IngrediantsType, Integer> ingrediants = new HashMap<>();
         ingrediants.put(IngrediantsType.MILK, 10);
         ingrediants.put(IngrediantsType.WATER, 20);
         Coffee americano = new Americano(ingrediants);
 
 
-        // Latte
+        // Coffee.Latte
         Map<IngrediantsType, Integer> ingrediants2 = new HashMap<>();
         ingrediants.put(IngrediantsType.MILK, 5);
         ingrediants.put(IngrediantsType.WATER, 2);
@@ -37,7 +52,7 @@ public class CoffeeMachine {
         latte = new Milk(latte, 20);
         latte = new Water(latte, 5);
 
-        // Cappucino
+        // Coffee.Cappucino
         Map<IngrediantsType, Integer> ingrediants3 = new HashMap<>();
         ingrediants.put(IngrediantsType.MILK, 10);
         ingrediants.put(IngrediantsType.WATER, 15);
@@ -74,20 +89,20 @@ public class CoffeeMachine {
             if (stockManager.useStock(ingrediant, count)) {
                 System.out.println("Adding " + count + " " + ingrediant + " to the coffee");
 
-                while (true) {
-                    System.out.println("Please 1 if you want to add more " + ingrediant + " to the coffee else press 0");
-                    int option = scanner.nextInt();
-                    if (option == 1) {
-                        if (stockManager.useStock(ingrediant, 1)) {
-                            coffee = addIngrediant(coffee, ingrediant, 1);
-                        } else {
-                            System.out.println("We're out of extra " + ingrediant);
-                            break;
-                        }
-                    } else {
-                        break;
-                    }
-                }
+//                while (true) {
+//                    System.out.println("Please 1 if you want to add more " + ingrediant + " to the coffee else press 0");
+//                    int option = scanner.nextInt();
+//                    if (option == 1) {
+//                        if (stockManager.useStock(ingrediant, 1)) {
+//                            coffee = addIngrediant(coffee, ingrediant, 1);
+//                        } else {
+//                            System.out.println("We're out of extra " + ingrediant);
+//                            break;
+//                        }
+//                    } else {
+//                        break;
+//                    }
+//                }
             } else {
                 System.out.println("We're out of " + ingrediant + " for the coffee, please try again later");
                 break;

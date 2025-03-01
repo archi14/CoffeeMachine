@@ -1,11 +1,14 @@
-public class Water extends Ingrediants{
+package IngrediantsDecorator;
+
+import Coffee.Coffee;
+
+public class Milk extends Ingrediants {
     private int quantityML;
     private int costPerML;
-
-    public Water(Coffee coffee, int quantityML) {
+    public Milk(Coffee coffee, int quantityML) {
         super(coffee);
         this.quantityML = quantityML;
-        this.costPerML = 2;
+        this.costPerML = 10;
     }
 
     public int getQuantityML() {

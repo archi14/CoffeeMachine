@@ -1,3 +1,7 @@
+package Utils;
+
+import IngrediantsDecorator.IngrediantsType;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +18,7 @@ public class StockManager {
         ingrediants.put(ingrediantsType, ingrediants.getOrDefault(ingrediants, 0) + count);
     }
 
-    public boolean useStock(IngrediantsType ingrediantsType, int count)
+    public synchronized boolean  useStock(IngrediantsType ingrediantsType, int count)
     {
         if(count <= ingrediants.get(ingrediantsType))
         {

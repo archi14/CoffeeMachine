@@ -1,3 +1,7 @@
+package IngrediantsDecorator;
+
+import Coffee.Coffee;
+
 public class WhippedCream extends Ingrediants {
     private int price;
     private int squeeze;
